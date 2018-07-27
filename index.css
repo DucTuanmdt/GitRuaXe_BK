@@ -1,0 +1,102 @@
+        #menu {
+            width: 100%;
+            text-align: center;
+            clear: both;
+        }
+        
+        #menu .iconLogo {
+            width: 200px;
+            position: relative;
+            top: -16px;
+        }
+
+        #menu .iconMenu {
+            height: 25px;
+            position: relative;
+            top: -1px;
+        }
+
+        #menu .menuElement a {
+            text-align: center;
+            transition: 0.3s ease;
+            background: currentColor;
+            color: white;
+            margin: 0px;
+            background-color: black;
+            font-size: 20px;
+            padding: 12px 40px !important;
+            display: inline-block;
+            text-decoration: none;
+            transform: scaleX(1);
+            -webkit-transition: color 500ms, padding 500ms;
+        }
+
+        #menu .menuElement a:after {
+            display: block;
+            content: '';
+            border-bottom: solid 2px orange;
+            transform: scaleX(0);
+            transition: transform 500ms ease-in-out;
+        }
+
+        #menu .menuElement a:hover:after {
+            transform: scaleX(1);
+        }
+
+        #menu .menuElement a:hover {
+            color: orange !important; 
+        }
+
+        #menu .navbar{
+            margin-bottom: 0px;
+        }
+
+        #slideshow {
+            width: 100%;
+            height: -webkit-fill-available;
+            position: absolute;
+            top: 52px;
+            display:inline-block;
+            background-color: rgba(57, 156, 180, 0.438);
+            overflow: hidden;
+            z-index: -1;
+            max-height: 1010px;
+        }
+
+        #slideshow .mySlide{
+            width: 100%;
+            display: none;
+            position: absolute;
+        }
+
+        #slideshow .imgSlide{
+            position: relative;
+
+        }
+
+        #slideshow #containerButton{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            top: 40%;
+            left: 0px;
+            padding: 0px 20px;
+        }
+
+        #slideshow .slideButton {
+            width: 40px;
+            height: 40px;
+            font-size: 30px;
+            color: white;
+            background-color: rgb(172, 160, 160);
+            border-radius: 50%;
+            cursor: pointer;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        #slideshow .slideButton:hover{
+            color: rgb(240, 152, 80);
+            background-color: rgb(214, 202, 202);
+        }
+

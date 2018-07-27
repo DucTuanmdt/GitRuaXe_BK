@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rửa xe XYZ</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' type='text/css' href='index.css'>
+
+</head>
+
+<body>
+
+    <!-- Start Menu -->
+    <div id='menu'>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid" style="background-color: black !important;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html" title="Rửa xe chuyên nghiệp XYZ">
+                        <img class='iconLogo' src='image/imagemenu/logo.png'>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="menuElement">
+                            <a href='gioithieu.html'>
+                                <img class='iconMenu' src='image/imagemenu/gioithieu.png'> Giới thiệu</a>
+                        </li>
+                        <li class="menuElement">
+                            <a href='dichvu.html'>
+                                <img class='iconMenu' src='image/imagemenu/dichvu.png'> Dịch vụ</a>
+                        </li>
+                        <li class="menuElement">
+                            <a href='tuyendung.html'>
+                                <img class='iconMenu' src='image/imagemenu/tuyendung.png'> Tuyển dụng</a>
+                        </li>
+                        <li class="menuElement">
+                            <a href='tintuc.html'>
+                                <img class='iconMenu' src='image/imagemenu/tintuc.png'> Tin tức</a>
+                        </li>
+                        <li class="menuElement">
+                            <a href='lienhe.html'>
+                                <img class='iconMenu' src='image/imagemenu/lienhe.png'> Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- End Menu -->
+    <div id='slideshow'>
+        <div class='mySlide'>
+            <img class='imgSlide' src='image/imageslide/ruaxe1.jpg' width='100%'>
+        </div>
+        <div class='mySlide'>
+            <img class='imgSlide' src='image/imageslide/ruaxe2.jpg' width='100%'>
+        </div>
+        <div class='mySlide'>
+            <img class='imgSlide' src='image/imageslide/ruaxe3.jpg' width='100%'>
+        </div>
+        <div class='mySlide'>
+            <img class='imgSlide' src='image/imageslide/ruaxe4.jpg' width='100%'>
+        </div>
+        <div class='mySlide'>
+            <img class='imgSlide' src='image/imageslide/ruaxe5.jpg' width='100%'>
+        </div>
+        <div id='containerButton'>
+            <span class='slideButton' style='float: left' onclick='plusDivs(-1)'>&#10094;</span>
+            <span class='slideButton' style='float: right' onclick='plusDivs(1)'>&#10095;</span>
+            <span class='slideButton'  onclick='test()'>&#10095;</span>
+        </div>
+
+        <script>
+
+            $.jqMoveSlide = function(){
+                var slide = $('.mySlide');
+                slide.animate({left: slide.width()/2,opacity: '0.8'}, "slow");
+                slide.animate({left: slide.width()/3, opacity: '0.6'}, "slow");
+                slide.animate({left: slide.width(), opacity: '0.1'});
+               // slide.slideUp("slow");
+            };
+            function test(){
+                $.jqMoveSlide();
+            }
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function currentDiv(n) {
+                showDivs(slideIndex = n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlide");
+                //   var dots = document.getElementsByClassName("demo");
+                if (n > x.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = x.length }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                //   for (i = 0; i < dots.length; i++) {
+                //      dots[i].className = dots[i].className.replace(" w3-white", "");
+                //   }
+                x[slideIndex - 1].style.display = "block";
+                //   dots[slideIndex-1].className += " w3-white";
+            }
+             
+
+
+        </script>
+
+    </div>
+
+</body>
+
+</html>
