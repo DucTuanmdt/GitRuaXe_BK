@@ -3,12 +3,14 @@
             text-align: center;
             clear: both;
             position: fixed;
+            z-index: 100;
         }
         
         #menu .iconLogo {
             width: 200px;
             position: relative;
             top: -16px;
+            padding: 0px;
         }
 
         #menu .iconMenu {
@@ -45,11 +47,17 @@
         }
 
         #menu .menuElement a:hover {
-            color: orange !important; 
+            color: rgb(223, 162, 50) !important; 
+            background-color: rgb(56, 56, 56) !important;
         }
 
         #menu .navbar{
             margin-bottom: 0px;
+        }
+
+        #menu .myActive a{
+            background-color: rgb(46, 46, 46) !important;
+            color: rgb(226, 170, 65) !important;
         }
 
         #slideshow {
@@ -107,5 +115,38 @@
         #slideshow .slideButton:hover{
             color: rgb(240, 152, 80);
             background-color: rgb(214, 202, 202);
+        }
+
+        #lienhe{
+            width: 85%;
+            padding-top: 100px;
+        }
+
+        #lienhe p{
+            font-size: 15px;
+        }
+
+        #lienhe #thongTinLienHe{
+            margin: auto;
+            border-bottom: 3px inset orange;
+            border-radius: 5%;
+            background-color:transparent;
+
+            border-left: 3px inset orange;
+        }
+
+        #lienhe #thongTinLienHe h2{
+            border-bottom: 3px outset black;
+            border-radius: 10%;
+            color: rgb(158, 103, 0);
+        }
+
+        #lienhe #thongTinLienHe h5{
+            color: rgb(180, 118, 1);
+        }
+
+        #lienhe #thongTinLienHe em{
+            color: rgb(0, 145, 36);
+            font-weight: bold;
         }
 
