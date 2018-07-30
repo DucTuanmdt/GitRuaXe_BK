@@ -9,11 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel='stylesheet' type='text/css' href='css/index.css'>
-    <link rel='stylesheet' type='text/css' href='css/foundation.css'>
-    
+
 </head>
 
-<body>
+<body onresize="resizeContainerSlideshow()">
 
     <!-- Start Menu -->
     <div id='menu'>
@@ -78,6 +77,16 @@
             <button class='slideButton' style='float: right' onclick='plusDivs(1)'>&#10095;</button>
         </div>
 
+        <div id='containerButtonChoose'>
+                <div>
+                    <button class='slideButton slideButtonChoose' style='float: left' onclick='currentDiv(0)'></button>
+                    <button class='slideButton slideButtonChoose' style='float: left' onclick='currentDiv(1)'></button>
+                    <button class='slideButton slideButtonChoose' style='float: left' onclick='currentDiv(2)'></button>
+                    <button class='slideButton slideButtonChoose' style='float: left' onclick='currentDiv(3)'></button>
+                    <button class='slideButton slideButtonChoose' style='float: left' onclick='currentDiv(4)'></button>
+                </div>
+            </div>
+
     </div>
 
     <script>
@@ -85,11 +94,17 @@
         var slideCurrentIndex = 0;
         var slideNextIndex = 0;
         showDivs(slideCurrentIndex);
+        resizeContainerSlideshow();
+
+        function resizeContainerSlideshow() {
+            $('#slideshow').height($('.imgSlide')[slideCurrentIndex].height);
+        }
 
         function plusDivs(n) {
             $('.slideButton').prop('disabled', true);
 
             slideNextIndex = CheckIndex(slideCurrentIndex + n);
+            setColorButtonChoose();
             if (n > 0) {
                 moveSlideLeftToRight();
             }
@@ -97,7 +112,7 @@
                 moveSlideRightToLeft();
             }
 
-            setTimeout(function () { $('.slideButton').prop('disabled', false);}, 1600);
+            setTimeout(function () { $('.slideButton').prop('disabled', false); }, 1600);
         }
 
 
@@ -110,11 +125,27 @@
         }
 
         function currentDiv(n) {
+            if (n === slideCurrentIndex)
+            return;
+            slideNextIndex = n;
+            setColorButtonChoose();
             if (slideNextIndex < slideCurrentIndex) {
                 moveSlideLeftToRight();
             } else if (slideNextIndex > slideCurrentIndex) {
                 moveSlideRightToLeft();
             }
+        }
+
+        function setColorButtonChoose(){
+            var currentSlideButtonChoose = $('#slideButtonChoose' + slideCurrentIndex);
+            var nextSlideButtonChoose = $('#slideButtonChoose' + slideNextIndex);
+
+            currentSlideButtonChoose.css({
+                'border-color':'rgb(255, 255, 255)'
+            });
+            nextSlideButtonChoose.css({
+                'border-color':'rgb(255, 136, 0)'
+            });
         }
 
         function showDivs(n) {
@@ -139,15 +170,15 @@
                 'display': 'block'
             });
 
-            currentSlide.animate({ left: currentSlide.width() / 2, opacity: '0.8' }, "slow");
-            currentSlide.animate({ left: currentSlide.width() / 3, opacity: '0.6' }, "slow");
+            currentSlide.animate({ left: currentSlide.width() / 2, opacity: '0.8' });
+            currentSlide.animate({ left: currentSlide.width() / 3, opacity: '0.6' });
             currentSlide.animate({ left: currentSlide.width(), opacity: '0.1' });
 
-            nextSlide.animate({ left: currentSlide.width() / 2 - currentSlide.width(), opacity: '0.3' }, "slow");
-            nextSlide.animate({ left: currentSlide.width() / 3 - currentSlide.width(), opacity: '0.6' }, "slow");
+            nextSlide.animate({ left: currentSlide.width() / 2 - currentSlide.width(), opacity: '0.3' });
+            nextSlide.animate({ left: currentSlide.width() / 3 - currentSlide.width(), opacity: '0.6' });
             nextSlide.animate({ left: '0px', opacity: '1' });
 
-            $.jqHideSlide(currentslideCurrentIndex);
+            $.jsEnableSlideDelay(currentslideCurrentIndex);
             slideCurrentIndex = slideNextIndex;
         };
 
@@ -161,22 +192,22 @@
                 'display': 'block'
             });
 
-            currentSlide.animate({ left: -currentSlide.width() / 2, opacity: '0.8' }, "slow");
-            currentSlide.animate({ left: -currentSlide.width() / 3, opacity: '0.6' }, "slow");
+            currentSlide.animate({ left: -currentSlide.width() / 2, opacity: '0.8' });
+            currentSlide.animate({ left: -currentSlide.width() / 3, opacity: '0.6' });
             currentSlide.animate({ left: -currentSlide.width(), opacity: '0.1' });
 
-            nextSlide.animate({ left: currentSlide.width() - currentSlide.width() / 2, opacity: '0.3' }, "slow");
-            nextSlide.animate({ left: currentSlide.width() - currentSlide.width() / 3, opacity: '0.6' }, "slow");
+            nextSlide.animate({ left: currentSlide.width() - currentSlide.width() / 2, opacity: '0.3' });
+            nextSlide.animate({ left: currentSlide.width() - currentSlide.width() / 3, opacity: '0.6' });
             nextSlide.animate({ left: '0px', opacity: '1' });
 
-            $.jqHideSlide(currentslideCurrentIndex);
+            $.jsEnableSlideDelay(currentslideCurrentIndex);
             slideCurrentIndex = slideNextIndex;
         };
 
         //Hide sau 2s
-        $.jqHideSlide = function (slideCurrentIndex) {
+        $.jsEnableSlideDelay = function (slideCurrentIndex) {
             var currentSlide = $('#slide' + slideCurrentIndex);
-            currentSlide.delay(50)
+            currentSlide.delay(10)
                 .queue(function (next) {
                     $(this).css('display', 'none');
                     next();
@@ -198,7 +229,19 @@
             }
         }
 
+        function setIndexSlideButtonChoose() {
+            var slides = document.getElementsByClassName('slideButtonChoose');
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].id = 'slideButtonChoose' + i;
+            }
+
+            $('#slideButtonChoose0').css({
+                'border-color':'rgb(255, 136, 0)'
+            });
+        }
+
         setIndexSlide();
+        setIndexSlideButtonChoose();
 
     </script>
 
