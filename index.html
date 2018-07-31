@@ -96,6 +96,13 @@
         showDivs(slideCurrentIndex);
         resizeContainerSlideshow();
 
+        function autoMoveSlide(){
+            setTimeout(function(){plusDivs(1);}, 5000);
+            
+            setTimeout(autoMoveSlide, 5000);
+        }
+        
+
         function resizeContainerSlideshow() {
             $('#slideshow').height($('.imgSlide')[slideCurrentIndex].height);
         }
@@ -242,6 +249,7 @@
 
         setIndexSlide();
         setIndexSlideButtonChoose();
+        autoMoveSlide();
 
     </script>
 
